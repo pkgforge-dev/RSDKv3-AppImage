@@ -1,4 +1,0 @@
-#!/bin/false
-dir=${XDG_DATA_HOME:-~/.local/share}/soniccd
-mkdir -p "$dir"
-cd "$dir"
