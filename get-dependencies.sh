@@ -7,17 +7,23 @@ ARCH=$(uname -m)
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
-    cmake     \
-    glew      \
-    libdecor  \
-    libtheora \
-    sdl2
+    cmake       \
+    glew        \
+    libtheora   \
+    sdl2-compat
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano
+get-debloated-pkgs --add-common --prefer-nano libdecor-mini
 
-# Comment this out if you need an AUR package
-make-aur-package soniccd-git
+echo "Building RSDKv3 Decompilation..."
+echo "---------------------------------------------------------------"
+REPO="https://github.com/RSDKModding/RSDKv3-Decompilation"
+VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
+git clone --recursive --depth 1 "$REPO" ./RSDKv3
+echo "$VERSION" > ~/version
 
-# If the application needs to be manually built that has to be done down here
+mkdir -p ./AppDir/bin
+cmake -S ./RSDKv3 -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j$(nproc)
+mv -v ./build/RSDKv3 ./AppDir/bin
