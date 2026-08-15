@@ -17,10 +17,6 @@ echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common --prefer-nano
 
-# Comment this out if you need an AUR package
-#make-aur-package soniccd-git
-
-# If the application needs to be manually built that has to be done down here
 echo "Making nightly build of RSDKv3 Decompilation..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/RSDKModding/RSDKv3-Decompilation"
