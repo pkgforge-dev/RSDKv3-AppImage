@@ -1,4 +1,4 @@
 #!/bin/sh
-dir=$DATADIR/soniccd
+dir=$DATADIR/RSDKv3
 mkdir -p "$dir"
 cd "$dir"
