@@ -1,4 +1,4 @@
 #!/bin/sh
-dir=$DATADIR/RSDKv3
+dir=$DATADIR/rsdkv3
 mkdir -p "$dir"
 cd "$dir"
