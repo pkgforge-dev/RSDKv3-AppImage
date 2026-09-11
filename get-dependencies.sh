@@ -24,7 +24,6 @@ git clone --recursive --depth 1 "$REPO" ./RSDKv3
 echo "$VERSION" > ~/version
 
 mkdir -p ./AppDir/bin
-cd ./RSDKv3
-cmake ./ -B build -D CMAKE_BUILD_TYPE=Release
+cmake -S ./RSDKv3 -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
-mv -v ./build/RSDKv3 ../AppDir/bin
+mv -v ./build/RSDKv3 ./AppDir/bin
